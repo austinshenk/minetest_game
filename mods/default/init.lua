@@ -1741,7 +1741,7 @@ minetest.register_on_punchnode(on_punchnode)
 
 minetest.register_on_joinplayer(function(obj)
 	if minetest.setting_getbool("creative_mode") then
-		obj:set_inventory_formspec(obj:get_inventory_formspec.."background[-0.5,-0.5;8,8;default_player_gui.png]")
+		obj:set_inventory_formspec(obj:get_inventory_formspec.."background[-0.5,-0.5;8,7.5;default_player_gui.png]")
 	end
 end)
 -- END
