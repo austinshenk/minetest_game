@@ -1233,6 +1233,7 @@ minetest.register_node("default:chest", {
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,9]"..
+				"background[-0.5,-0.5;8,4;default_chest_gui.png]"..
 				"list[current_name;main;0,0;8,4;]"..
 				"list[current_player;main;0,5;8,4;]")
 		meta:set_string("infotext", "Chest")
@@ -1342,6 +1343,7 @@ minetest.register_node("default:chest_locked", {
 			local pos = pos.x .. "," .. pos.y .. "," ..pos.z
 			minetest.show_formspec(clicker:get_player_name(), "default:chest_locked",
 				"size[8,9]"..
+				"background[-0.5,-0.5;8,4;default_chest_gui.png]"..
 				"list[nodemeta:".. pos .. ";main;0,0;8,4;]"..
 				"list[current_player;main;0,5;8,4;]")
 		end
@@ -1350,6 +1352,7 @@ minetest.register_node("default:chest_locked", {
 
 default.furnace_inactive_formspec =
 	"size[8,9]"..
+	"background[-0.5,-0.5;8,4;default_furnace_gui.png]"..
 	"image[2,2;1,1;default_furnace_fire_bg.png]"..
 	"list[current_name;fuel;2,3;1,1;]"..
 	"list[current_name;src;2,1;1,1;]"..
