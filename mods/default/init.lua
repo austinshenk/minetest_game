@@ -1233,7 +1233,7 @@ minetest.register_node("default:chest", {
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,9]"..
-				"background[-0.25,-0.5;8.5,9.5;default_chest_gui.png]"..
+				"background[-0.25,-0.5;8.5,10;default_chest_gui.png]"..
 				"list[current_name;main;0,0;8,4;]"..
 				"list[current_player;main;0,5;8,4;]")
 		meta:set_string("infotext", "Chest")
@@ -1343,7 +1343,7 @@ minetest.register_node("default:chest_locked", {
 			local pos = pos.x .. "," .. pos.y .. "," ..pos.z
 			minetest.show_formspec(clicker:get_player_name(), "default:chest_locked",
 				"size[8,9]"..
-				"background[-0.25,-0.5;8.5,9.5;default_chest_gui.png]"..
+				"background[-0.25,-0.5;8.5,10;default_chest_gui.png]"..
 				"list[nodemeta:".. pos .. ";main;0,0;8,4;]"..
 				"list[current_player;main;0,5;8,4;]")
 		end
@@ -1352,7 +1352,7 @@ minetest.register_node("default:chest_locked", {
 
 default.furnace_inactive_formspec =
 	"size[8,9]"..
-	"background[-0.25,-0.5;8.5,9.5;default_furnace_gui.png]"..
+	"background[-0.25,-0.5;8.5,10;default_furnace_gui.png]"..
 	"image[2,2;1,1;default_furnace_fire_bg.png]"..
 	"list[current_name;fuel;2,3;1,1;]"..
 	"list[current_name;src;2,1;1,1;]"..
@@ -1492,6 +1492,7 @@ minetest.register_abm({
 			hacky_swap_node(pos,"default:furnace_active")
 			meta:set_string("formspec",
 				"size[8,9]"..
+				"background[-0.25,-0.5;8.5,10;default_furnace_gui.png]"..
 				"image[2,2;1,1;default_furnace_fire_bg.png^[lowpart:"..
 						(100-percent)..":default_furnace_fire_fg.png]"..
 				"list[current_name;fuel;2,3;1,1;]"..
@@ -1740,8 +1741,8 @@ end
 minetest.register_on_punchnode(on_punchnode)
 
 minetest.register_on_joinplayer(function(obj)
-	if minetest.setting_getbool("creative_mode") then
-		obj:set_inventory_formspec(obj:get_inventory_formspec.."background[-.25,-.5;8.5,8.5;default_player_gui.png]")
+	if not minetest.setting_getbool("creative_mode") then
+		obj:set_inventory_formspec(obj:get_inventory_formspec().."background[-.25,-.5;8.5,8.5;default_player_gui.png]")
 	end
 end)
 -- END
